@@ -77,7 +77,6 @@ def selectcard() :
 		
 		return redirect(url_for('board'))
 
-
 	return render_template("select_card.html")
 
 @app.route('/board')
@@ -89,12 +88,12 @@ def board():
 			category_data = user.query.filter_by(name=session['name']).first().category.split(':')
 		except:
 			return redirect(url_for('selectcard'))
-		"""
+		
 		result_dic = {}
 		for category in category_data:
 			result_dic[category] = parsing_data.query.filter_by(category=category).all()
-		"""
-		return render_template('board.html', username=session['name'], category_data=category_data, class_set=class_set)
+		
+		return render_template('board.html', username=session['name'], category_data=category_data, class_set=class_set, result_dic=result_dic)
 
 	return redirect(url_for('login'))
 
@@ -102,8 +101,13 @@ def board():
 def getdata():
 	if request.method == 'POST' or True:
 		category = request.args.get('category')
-		result_data = parsing_data.query.filter_by(category=category).all()
+		db_data = parsing_data.query.filter_by(category=category).all()
 		
+		result_data = {}
+
+		for idx, data in enumerate(db_data):
+			result_data[str(idx)] = {'id':data.id, 'location':data.location, 'title':data.title, 'site':data.site, 'url':data.url}
+
 		return json.dumps(result_data)
 
 	return 'NULL'

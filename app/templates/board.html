@@ -72,8 +72,7 @@ Board
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		<h3 id="cards_title">Modal header</h3>
 	</div>
-	<div class="modal-body">
-		<p>One fine body…</p>
+	<div id="modal_body" class="modal-body">
 	</div>
 </div>
 
@@ -87,18 +86,30 @@ $(function(){
 	$('.category').bind('click', function(){
 		var modal_title = $('#content_modal h3');
 		var category = $(this).children('.category_title').text();
-		var modal_content = $('#content_modal p');
-
+		var modal_content = $('#modal_body');
+		
 		modal_title.text(category);
+		modal_content.text('');
 
-/*		$.post('{{ url_for('getdata') }}', { category:category}, $.proxy(
+		$.get('{{ url_for('getdata') }}', { category:category}, $.proxy(
 			function(data){
-				console.log(data);
+				data = $.parseJSON(data);	
+				for(k in data){
+					console.log(data[k]);
+					$data = $('<div class="modal_div"></div>');
+					if( data[k].site == 'cafe'){
+						$data.append('<a class="modal_url"  href="'+data[k].url+'"><i class="icon-coffee"></i></a>');
+					}else if(data[k].site == 'facebook'){
+						$data.append('<a class="modal_url"  href="'+data[k].url+'"><i class="icon-facebook-squared"></i></a>');
+					}
+					$data.append('<span class="modal_title">'+data[k].title +'</span>');
+					modal_content.append($data);
+				}
 			}, this));		
-*/
-	});
-})
 
+	});
+
+})
 
 </script>
 {% endblock %}
