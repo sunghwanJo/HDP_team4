@@ -1,0 +1,33 @@
+/* */
+
+
+.center {
+	text-align:center;
+}
+
+.category {
+	height:200px;
+}
+
+.category_icon {
+	color:#b0b0b0;
+	font-size:100px;
+}
+
+.category_icon:hover {
+	color:red;
+	font-size:100px;
+}
+
+.category_title {
+	font-size:20px;
+}
+
+.card {
+	padding:10px;
+	border-style:solid;
+	border-width:1px;
+	border-color:#000;
+}
+
+

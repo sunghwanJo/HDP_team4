@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		{% block head %}
+		{% endblock %}
+		<meta name="viewport" content="width-device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fontello.css') }}">
+		<title>{% block title  %}Login Page {% endblock %}</title>		
+	</head>
+	<body>
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	{% block content %}
+
+
+	{% endblock %}
+	<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+	</body>
+</html>

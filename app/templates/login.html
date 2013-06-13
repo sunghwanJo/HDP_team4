@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+LOGIN PAGE
+{% endblock %}
+
+{% block content %}
+
+<div class="center">
+	<h1>BOAXT</h1>
+	
+	{% if error_message %}
+	<div class="alert">
+  		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ error_message }}</strong>
+		</br>please check ID/Password
+	</div>
+	{% endif %}
+
+	<form action="/login" method=post>
+		<div>
+			<input type = "text" placeholder = "username" required="" name="name">
+		</div>
+		<div>
+			<input type = "password" placeholder = "password" required="" name="password">
+		</div>	
+		<input type="submit" class="btn" value="Login" /> &nbsp;&nbsp;&nbsp;
+	</form>
+	<a href="{{ url_for('register')}}"><button class="btn">Register</button></a>
+</div>
+{% endblock %}

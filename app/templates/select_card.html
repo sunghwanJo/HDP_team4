@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+SELECT CARD
+
+{% endblock %}
+
+{% block content %}
+<div class="center">
+	<h1>SELECT CATEGORY</h1>
+	<form method=post action="/selectcard">
+		<fieldset>
+			<input type="checkbox" name = "homework" value="과제"> 과제
+			<input type="checkbox" name = "notice" value="공지"> 공지
+			<input type="checkbox" name = "etc" value="기타"> 기타
+			<input type="checkbox" name = "teacher" value="선생님글"> 선생님글
+			<input type="checkbox" name = "pf" value="교수님글"> 교수님글
+			<input type="checkbox" name = "tak-bae" value="택배"> 택배
+			<button type="submit" class="btn">Submit</button>
+		</fieldset>
+	</form>
+	<a href="{{url_for("login")}}"><button class = "btn">Cancel</button></a>
+</div>
+{% endblock %}

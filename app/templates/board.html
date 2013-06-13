@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block head %}
+<meta charset="utf-8">
+<title>Bootstrap, from Twitter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<style type="text/css">
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+.sidebar-nav {
+padding: 9px 0;
+}
+
+@media (max-width: 980px) {
+	/* Enable use of floated navbar text */
+	.navbar-text.pull-right {
+float: none;
+	   padding-left: 5px;
+	   padding-right: 5px;
+	}
+}
+
+</style>
+{% endblock %}
+
+{% block title %}
+Board
+{% endblock %}
+
+{% block content %}
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="brand" href="#">Boaxt</a>
+			<div class="nav-collapse" style="height:auto;">
+				<ul class="nav pull-right">
+					<li><a href="{{ url_for('logout') }}">Logout</a></li>
+					<li><a href="{{ url_for('selectcard') }}">Select Card</a></li>
+				</ul>
+				<p class="navbar-text">
+					welcome <a href="#" class="navbar-link">{{ username  }}</a>
+				</p>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12 center">
+			<div class="row-fluid">
+				{% for category in category_data %}
+				<div class="category span4">
+					<a href="#content_modal" data-toggle="modal">
+						<i class="{{ class_set[category] }} category_icon"></i>
+					</a>
+					<span class="category_title">{{ category }}</span>
+				</div>
+				{% endfor %}
+			</div><!--/row-->
+		</div><!--/span-->
+	</div><!--/row-->
+</div><!--/.fluid-container-->
+
+<div id="content_modal" class="modal hide fade">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3 id="cards_title">Modal header</h3>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+	</div>
+</div>
+
+<footer>
+<p>&copy; Team 4our</p>
+</footer>
+
+</body>
+<script>
+$(function(){
+	$('.category').bind('click', function(){
+		var modal_title = $('#content_modal h3');
+		var category = $(this).children('.category_title').text();
+		var modal_content = $('#content_modal p');
+
+		modal_title.text(category);
+
+/*		$.post('{{ url_for('getdata') }}', { category:category}, $.proxy(
+			function(data){
+				console.log(data);
+			}, this));		
+*/
+	});
+})
+
+
+</script>
+{% endblock %}
