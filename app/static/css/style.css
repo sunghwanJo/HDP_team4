@@ -1,6 +1,21 @@
 /* */
 
 
+.footer {
+	position:fixed;
+	
+}
+
+.login_h1 {
+	color:#fff;
+	margin-top:0px;
+}
+.main_img {
+	z-index:-5;
+	height:700px;
+	background-image:url('../img/main_movie.jpg');
+}
+
 .center {
 	text-align:center;
 }
