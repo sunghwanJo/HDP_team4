@@ -18,11 +18,9 @@ def db_set():
 
 def data_refresh():
 	while(True):
-		try:
-			parsing_data.db_insert_cafe()
-			parsing_data.db_insert_facebook()
-			print "REFRESH!!!"
-			time.sleep(120)
-		except:
-			print "ERROR!!!"
+		db.create_all()
+		parsing_data.db_insert_cafe()
+		parsing_data.db_insert_facebook()
+		print "REFRESH!!!"
+		time.sleep(120)
 

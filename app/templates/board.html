@@ -89,11 +89,11 @@ $(function(){
 					console.log(data[k]);
 					$data = $('<div class="modal_div"></div>');
 					if( data[k].site == 'cafe'){
-						$data.append('<a class="modal_url"  href="'+data[k].url+'"><i class="icon-coffee"></i></a>');
+						$data.append('<a class="modal_url" target="_blank" href="'+data[k].url+'"><i class="icon-coffee"></i></a>');
 					}else if(data[k].site == 'facebook'){
-						$data.append('<a class="modal_url"  href="'+data[k].url+'"><i class="icon-facebook-squared"></i></a>');
+						$data.append('<a class="modal_url" target="_blank" href="'+data[k].url+'"><i class="icon-facebook-squared"></i></a>');
 					}
-					$data.append('<span class="modal_title">'+data[k].title +'</span>');
+					$data.append('<span class="modal_title">  '+data[k].title +'</span>');
 					modal_content.append($data);
 				}
 			}, this));		
