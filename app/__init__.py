@@ -125,7 +125,7 @@ class user(db.Model):
 
 class parsing_data(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	url = db.Column(db.String(250))			#게시글의 url address
+	url = db.Column(db.String(250), unique=True)			#게시글의 url address
 	site = db.Column(db.String(20))					#Cafe facebook 구분
 	location = db.Column(db.String(100))			#까페내 게시판 이름(facebook에서는 "나우리넥스트"
 	title = db.Column(db.String(200))				#글 제목(facebook에서는 글의 첫문장)

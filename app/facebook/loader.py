@@ -30,7 +30,6 @@ class facebook_parsing:
 		try:
 			self.cafe_data_dict = {}
 			debug_url = "a"
-			print "0",type(debug_url)
 			debug_url = 'https://graph.facebook.com/132468483587501?fields=feed.fields(message,created_time,link,from,id)&access_token=' + ACCESS_TOKEN
 			debug_url = debug_url.encode('utf8')
 			debug_url = debug_url[:-3]
@@ -40,7 +39,6 @@ class facebook_parsing:
 			time.sleep(1)
 
 			self.cafe_data_dict = json.load(u)
-			print self.cafe_data_dict
 			u.close()
 		except:
 			pass
