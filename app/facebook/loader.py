@@ -8,8 +8,15 @@ import json
 import urllib2
 import httplib
 import time
+page = urllib2.urlopen("http://www.nextstudents.nazuka.net/facebook/load_token.php")
+load_page = page.read().decode("utf8")
 
-ACCESS_TOKEN = 'CAACjeiZB6FgIBADtHZAeUn0EXboh3PDjEZBUmurMQ72KJ4O4Hon0lXbnA8E6ANovpB8f71DLsIFEC3HqWrrgE0eZCjQcQW0PFXgfsF9mS8qoeWnoTeVHFi5bTUQZChzBaclpWBZBsatOsaVVRzuCkbbAGLNfW6ip8ZD'
+split_temp = []
+split_temp = load_page.split(" <scrip")
+
+ACCESS_TOKEN = split_temp[0]
+
+#ACCESS_TOKEN = 'CAACjeiZB6FgIBAGdZB0vZC3ePZBlMSL722hRtZCZAzHi2FwplZCo9ta7C7IK9NELyJxW4SpaKkUQoZArlclWZBjDS6Wxca0c2foTl55iKMMzp4bV0E4Y5ZATl2yOR3peCjZAj2wr8ddOm6rcJPlunaDTrrPcaKZA2v6OBwMZD'
 
 class facebook_parsing:
 	
@@ -22,11 +29,18 @@ class facebook_parsing:
 		
 		try:
 			self.cafe_data_dict = {}
+			debug_url = "a"
+			print "0",type(debug_url)
 			debug_url = 'https://graph.facebook.com/132468483587501?fields=feed.fields(message,created_time,link,from,id)&access_token=' + ACCESS_TOKEN
+			debug_url = debug_url.encode('utf8')
+			debug_url = debug_url[:-3]
+			
 			u = urllib2.urlopen(debug_url)
+
 			time.sleep(1)
 
 			self.cafe_data_dict = json.load(u)
+			print self.cafe_data_dict
 			u.close()
 		except:
 			pass

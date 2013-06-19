@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import os
 import readline
+import time
+
 from pprint import pprint
 
 from flask import *
@@ -13,3 +15,14 @@ def db_set():
 	parsing_data.db_insert_cafe()
 	parsing_data.db_insert_facebook()
 	print "SUCCESS!!!"
+
+def data_refresh():
+	while(True):
+		try:
+			parsing_data.db_insert_cafe()
+			parsing_data.db_insert_facebook()
+			print "REFRESH!!!"
+			time.sleep(120)
+		except:
+			print "ERROR!!!"
+
